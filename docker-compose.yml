@@ -1,0 +1,14 @@
+services:
+  envguard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: envguard-daemon
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    volumes:
+      - ./:/workspace:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: ["serve", "--host", "0.0.0.0", "--port", "8080"]

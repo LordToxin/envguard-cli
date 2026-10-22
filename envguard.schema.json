@@ -1,0 +1,35 @@
+{
+  "$schema": "https://envguard.dev/schema/v1.json",
+  "title": "EnvGuard Sample Application Schema",
+  "allow_extra": true,
+  "variables": {
+    "PORT": {
+      "type": "port",
+      "required": true,
+      "description": "HTTP application listening port"
+    },
+    "NODE_ENV": {
+      "type": "enum",
+      "choices": ["development", "staging", "production", "test"],
+      "required": true
+    },
+    "DATABASE_URL": {
+      "type": "url",
+      "required": true,
+      "schemes": ["postgres", "postgresql", "mysql", "mongodb"]
+    },
+    "OPENAI_API_KEY": {
+      "type": "string",
+      "required": false,
+      "description": "OpenAI secret token (validated for entropy & signatures)"
+    },
+    "DEBUG": {
+      "type": "boolean",
+      "default": "false"
+    },
+    "ADMIN_EMAIL": {
+      "type": "email",
+      "required": false
+    }
+  }
+}
